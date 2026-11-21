@@ -1,6 +1,7 @@
 #include "button_events.h"
+#include <stddef.h>
 
-static button_event_data_t  queue[max_button_events];
+static button_event_data_t queue[max_button_events];
 
 static uint8_t head = 0;
 static uint8_t tail = 0;
@@ -17,12 +18,12 @@ bool button_events_push(
     button_event_t type,
     uint32_t timestamp_ms
 ) {
-   if (button_id < 1 || button_id > max_buttons) {
-        return false; // If false, the button_id is invalid
+    if (button_id < 1 || button_id > max_buttons) {
+        return false;
     }
 
     if (count >= max_button_events) {
-        return false; // Queue's full
+        return false;
     }
 
     queue[tail].button_id = button_id;
@@ -36,12 +37,13 @@ bool button_events_push(
 }
 
 bool button_events_pop(button_event_data_t *event) {
-    if (count == 0) {
-        return false; // Queue is empty
+    if (count == 0 || event == NULL) {
+        return false;
     }
 
     *event = queue[head];
-    head = (head + 1) % queue_size;
+
+    head = (head + 1) % max_button_events;
     count--;
 
     return true;
