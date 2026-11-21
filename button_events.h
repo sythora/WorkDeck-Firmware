@@ -1,4 +1,4 @@
-#ifdef button_events_h
+#ifndef button_events_h
 #define button_events_h
 
 #include <stdint.h>
@@ -27,3 +27,4 @@ bool button_events_push(
 );
 
 bool button_events_pop(button_event_data_t *event);
+#endif

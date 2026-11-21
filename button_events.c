@@ -1,3 +1,6 @@
+#ifndef button_events_c
+#define button_events_c
+
 #include "button_events.h"
 #include <stddef.h>
 
@@ -48,3 +51,4 @@ bool button_events_pop(button_event_data_t *event) {
 
     return true;
 }
+#endif

@@ -35,7 +35,9 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(WorkDeck_Firmware WorkDeck_Firmware.c )
+add_executable(WorkDeck_Firmware WorkDeck_Firmware.c
+button_events.c
+ )
 
 pico_set_program_name(WorkDeck_Firmware "WorkDeck_Firmware")
 pico_set_program_version(WorkDeck_Firmware "0.1")
