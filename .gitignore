@@ -1,2 +1,20 @@
-# Don't track the time tracker script
-time_tracker.py
+# Build artifacts
+build/
+*.o
+*.elf
+*.bin
+*.hex
+*.uf2
+*.dis
+*.map
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Scripts
+scripts/
