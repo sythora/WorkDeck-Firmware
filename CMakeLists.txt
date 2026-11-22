@@ -37,6 +37,7 @@ pico_sdk_init()
 
 add_executable(WorkDeck_Firmware WorkDeck_Firmware.c
 button_events.c
+button_scanner.c
  )
 
 pico_set_program_name(WorkDeck_Firmware "WorkDeck_Firmware")
