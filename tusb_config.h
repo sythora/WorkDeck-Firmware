@@ -14,9 +14,10 @@ extern "C" {
 // buffer sizes
 #define CFG_TUD_ENDPOINT0_SIZE 64
 
-// HID
-#define CFG_TUD_HID 1
-#define CFG_TUD_HID_EP_BUFSIZE 64
+// CDC (serial)
+#define CFG_TUD_CDC 1
+#define CFG_TUD_CDC_RX_BUFSIZE 64
+#define CFG_TUD_CDC_TX_BUFSIZE 64
 
 #ifdef __cplusplus
 }

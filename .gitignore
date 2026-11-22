@@ -1,2 +1,2 @@
-build
-!.vscode/*
+# Don't track the time tracker script
+time_tracker.py
