@@ -38,6 +38,9 @@ pico_sdk_init()
 add_executable(WorkDeck_Firmware WorkDeck_Firmware.c
 button_events.c
 button_scanner.c
+usb_hid.c
+keymaps.c
+usb_descriptors.c
  )
 
 pico_set_program_name(WorkDeck_Firmware "WorkDeck_Firmware")
@@ -45,11 +48,15 @@ pico_set_program_version(WorkDeck_Firmware "0.1")
 
 # Modify the below lines to enable/disable output over UART/USB
 pico_enable_stdio_uart(WorkDeck_Firmware 0)
-pico_enable_stdio_usb(WorkDeck_Firmware 0)
+pico_enable_stdio_usb(WorkDeck_Firmware 1)
 
 # Add the standard library to the build
 target_link_libraries(WorkDeck_Firmware
-        pico_stdlib)
+        pico_stdlib
+        hardware_gpio
+        pico_unique_id
+        tinyusb_board
+        tinyusb_device)
 
 # Add the standard include files to the build
 target_include_directories(WorkDeck_Firmware PRIVATE
