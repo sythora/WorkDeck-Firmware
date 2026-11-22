@@ -38,8 +38,8 @@ pico_sdk_init()
 add_executable(WorkDeck_Firmware WorkDeck_Firmware.c
 button_events.c
 button_scanner.c
-usb_hid.c
-keymaps.c
+usb_comms.c
+protocol.c
 usb_descriptors.c
  )
 
