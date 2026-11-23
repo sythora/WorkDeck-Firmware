@@ -28,7 +28,7 @@ jobs:
     - name: Build
       run: |
         export PICO_SDK_PATH=~/pico-sdk
-        mkdir build
+        mkdir -p build
         cd build
         cmake .. -G Ninja
         ninja
