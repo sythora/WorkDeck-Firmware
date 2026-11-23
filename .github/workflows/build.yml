@@ -1,0 +1,46 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+
+    - name: Install Pico SDK
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential ninja-build
+        git clone https://github.com/raspberrypi/pico-sdk.git ~/pico-sdk
+        cd ~/pico-sdk
+        git submodule update --init
+
+    - name: Build
+      run: |
+        export PICO_SDK_PATH=~/pico-sdk
+        mkdir build
+        cd build
+        cmake .. -G Ninja
+        ninja
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: firmware
+        path: build/*.uf2
+
+    - name: Release
+      if: github.event_name == 'release'
+      uses: softprops/action-gh-release@v1
+      with:
+        files: build/*.uf2
