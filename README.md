@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.png" alt="WorkDeck Logo" width="400"/>
+</p>
+
 # WorkDeck Firmware ♥
 
 Firmware for a DIY streamdeck thing built on Raspberry Pi Pico with a 4x2 button matrix.
